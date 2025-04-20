@@ -6,9 +6,26 @@ public class BinaryStatisticsProcessor
     private string[] m_binaryInputs;
     private int[] m_decimalValues;
 
-    public BinaryStatisticsProcessor(string[] i_binaryInputs)
+    public BinaryStatisticsProcessor()
     {
-        m_binaryInputs = i_binaryInputs;
+        // 1) Allocate storage
+        m_binaryInputs = new string[4];
+        m_decimalValues = new int[4];
+
+        // 2) Prompt & validate inside ctor
+        Console.WriteLine("Enter 4 binary numbers (each exactly 8 digits):");
+        for (int i = 0; i < m_binaryInputs.Length; i++)
+        {
+            m_binaryInputs[i] = ReadValidatedBinary(i);
+        }
+
+        // 3) Only once we have 4 valid inputs do we convert
+        ConvertInputsToDecimal();
+    }
+
+    private BinaryStatisticsProcessor(string[] inputs)
+    {
+        m_binaryInputs = inputs;
         m_decimalValues = new int[4];
         ConvertInputsToDecimal();
     }
@@ -22,6 +39,24 @@ public class BinaryStatisticsProcessor
         DisplayBinaryWithMostOnes();
         DisplayTotalNumberOfOnes();
     }
+    private static string ReadValidatedBinary(int index, int requiredLength = 8)
+    {
+        while (true)
+        {
+            Console.Write($"  #{index + 1}: ");
+            var input = Console.ReadLine()?.Trim();
+            if (IsValidBinary(input, requiredLength))
+            {
+                return input;
+            }
+            Console.WriteLine($"    → Invalid: must be exactly {requiredLength} characters of ‘0’ or ‘1’.");
+        }
+    }
+
+    private static bool IsValidBinary(string s, int length)
+        => !string.IsNullOrEmpty(s)
+           && s.Length == length
+           && s.All(c => c == '0' || c == '1');
 
     private void ConvertInputsToDecimal()
     {
@@ -139,35 +174,27 @@ public class BinaryStatisticsProcessor
 
     public static void RunMultipleExamples()
     {
-        RunOneExample("A", new[] { "1111111", "0001110", "1110000", "1010101" });
-        RunOneExample("B", new[] { "1011011", "0111110", "1000001", "0000000" });
-        RunOneExample("C", new[] { "0011001", "1100110", "1010101", "0101010" });
-        RunOneExample("D", new[] { "1001100", "1110001", "0011011", "0110110" });
+        RunOneExample("A", new[] { "11111111", "00011100", "11100000", "10101010" });
+        RunOneExample("B", new[] { "10110110", "01111100", "10000011", "00000000" });
+        RunOneExample("C", new[] { "00110010", "11001101", "10101010", "01010101" });
+        RunOneExample("D", new[] { "10011001", "11100010", "00110111", "01101100" });
     }
 
-    private static void RunOneExample(string i_label, string[] i_inputs)
+    private static void RunOneExample(string label, string[] inputs)
     {
-        Console.WriteLine($"\n==== Example {i_label} ====");
-        Console.WriteLine(string.Join(", ", i_inputs));
-
-        var processor = new BinaryStatisticsProcessor(i_inputs);
-        processor.RunAllAnalysis();
-        Console.WriteLine($"\n==== Example {i_label} End ====");
+        Console.WriteLine($"\n==== Example {label} ====");
+        Console.WriteLine(string.Join(", ", inputs));
+        var proc = new BinaryStatisticsProcessor(inputs);  // still using the old ctor here
+        proc.RunAllAnalysis();
+        Console.WriteLine($"==== Example {label} End ====");
     }
 
     public static void Main()
     {
-
         RunMultipleExamples();
 
-        Console.WriteLine("Enter 4 binary numbers (each 7 digits):");
-        string[] userInputs = new string[4];
-        for (int i = 0; i < 4; i++)
-        {
-            userInputs[i] = Console.ReadLine();
-        }
-
-        var processor = new BinaryStatisticsProcessor(userInputs);
+        Console.WriteLine("\n--- Interactive Mode ---");
+        var processor = new BinaryStatisticsProcessor();   
         processor.RunAllAnalysis();
     }
 }
