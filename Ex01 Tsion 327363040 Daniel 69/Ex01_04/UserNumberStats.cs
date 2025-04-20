@@ -4,10 +4,10 @@ class UserNumberStats
 {
     static void Main()
     {
-        // Show predefined examples
+        
         DisplayRunningExamples();
 
-        // Interactive mode
+        
         string userInputId = PromptForValidId();
         Console.WriteLine($"\nResults for your number: {userInputId}");
         RunAnalysis(userInputId);
@@ -23,10 +23,10 @@ class UserNumberStats
         int differenceBetweenMaxAndMinDigits = DifferenceBetweenMaxAndMinDigits(digitArray);
         var (digitWithMaxFrequency, frequencyOfMostCommonDigit) = GetMostFrequentDigit(digitArray);
 
-        Console.WriteLine($"b. Digits smaller than the left-most ({digitArray[0]}): {countDigitsSmallerThanLeftmost}");
-        Console.WriteLine($"c. Digits divisible by 3: {countDigitsDivisibleByThree}");
-        Console.WriteLine($"d. Difference between largest and smallest: {differenceBetweenMaxAndMinDigits}");
-        Console.WriteLine($"e. Most frequent digit: {digitWithMaxFrequency} (appears {frequencyOfMostCommonDigit} times)");
+        Console.WriteLine($"Digits smaller than the left-most ({digitArray[0]}): {countDigitsSmallerThanLeftmost}");
+        Console.WriteLine($"Digits divisible by 3: {countDigitsDivisibleByThree}");
+        Console.WriteLine($"Difference between largest and smallest: {differenceBetweenMaxAndMinDigits}");
+        Console.WriteLine($"Most frequent digit: {digitWithMaxFrequency} (appears {frequencyOfMostCommonDigit} times)");
     }
 
     // a. Prompt until the user provides an 8-digit numeric ID
@@ -68,7 +68,7 @@ class UserNumberStats
         Console.WriteLine("\n=== End of Examples ===\n");
     }
 
-    // Helper: check length and all digits
+    // check length and all digits
     static bool IsEightDigitNumeric(string i_input)
     {
         if (i_input.Length != 8)
@@ -92,7 +92,7 @@ class UserNumberStats
         return digitArray;
     }
 
-    // b. Count digits smaller than the left-most digit
+    // Count digits smaller than the left-most digit
     static int CountSmallerThanLeftmost(int[] i_digitArray)
     {
         int referenceDigit = i_digitArray[0];
@@ -105,7 +105,7 @@ class UserNumberStats
         return countSmaller;
     }
 
-    // c. Count digits divisible by 3
+    // Count digits divisible by 3
     static int CountDivisibleBy3(int[] i_digitArray)
     {
         int countDivBy3 = 0;
@@ -117,7 +117,7 @@ class UserNumberStats
         return countDivBy3;
     }
 
-    // d. Difference between the largest and smallest digit
+    // Difference between the largest and smallest digit
     static int DifferenceBetweenMaxAndMinDigits(int[] i_digitArray)
     {
         int maxDigit = i_digitArray[0];
@@ -132,7 +132,7 @@ class UserNumberStats
         return maxDigit - minDigit;
     }
 
-    // e. Find the most frequent digit and its count
+    // Find the most frequent digit and its count
     static (int digit, int count) GetMostFrequentDigit(int[] i_digitArray)
     {
         int[] digitCounts = new int[10];

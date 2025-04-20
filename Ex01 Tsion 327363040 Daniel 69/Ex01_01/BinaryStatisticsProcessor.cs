@@ -8,18 +8,18 @@ public class BinaryStatisticsProcessor
 
     public BinaryStatisticsProcessor()
     {
-        // 1) Allocate storage
+
         m_binaryInputs = new string[4];
         m_decimalValues = new int[4];
 
-        // 2) Prompt & validate inside ctor
+
         Console.WriteLine("Enter 4 binary numbers (each exactly 8 digits):");
         for (int i = 0; i < m_binaryInputs.Length; i++)
         {
             m_binaryInputs[i] = ReadValidatedBinary(i);
         }
 
-        // 3) Only once we have 4 valid inputs do we convert
+  
         ConvertInputsToDecimal();
     }
 
@@ -108,16 +108,6 @@ public class BinaryStatisticsProcessor
         }
     }
 
-    private int CountDifferingBits(string i_binaryA, string i_binaryB)
-    {
-        int count = 0;
-        for (int i = 0; i < i_binaryA.Length; i++)
-        {
-            if (i_binaryA[i] != i_binaryB[i]) count++;
-        }
-        return count;
-    }
-
 
     private void DisplayBinaryWithMostOnes()
     {
@@ -184,7 +174,7 @@ public class BinaryStatisticsProcessor
     {
         Console.WriteLine($"\n==== Example {label} ====");
         Console.WriteLine(string.Join(", ", inputs));
-        var proc = new BinaryStatisticsProcessor(inputs);  // still using the old ctor here
+        var proc = new BinaryStatisticsProcessor(inputs); 
         proc.RunAllAnalysis();
         Console.WriteLine($"==== Example {label} End ====");
     }
