@@ -4,10 +4,10 @@ class UserNumberStats
 {
     static void Main()
     {
-        
+
         DisplayRunningExamples();
 
-        
+
         string userInputId = PromptForValidId();
         Console.WriteLine($"\nResults for your number: {userInputId}");
         RunAnalysis(userInputId);
