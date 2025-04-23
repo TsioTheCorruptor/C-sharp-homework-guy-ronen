@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace Ex01_03
+namespace Ex01_02
 {
     internal class Program
     {
@@ -19,7 +19,7 @@ namespace Ex01_03
         static void Main()
         {
 
-            getHeightInput();
+            treeHeight = 5;
             printTree();
 
         }
@@ -39,22 +39,7 @@ namespace Ex01_03
             printTrunk();
 
         }
-        private static void getHeightInput()
-        {
-            while (true)
-            {
-                Console.Write("Enter tree height: ");
-                string i_userInput = Console.ReadLine()?.Trim() ?? string.Empty;
-
-                if (!int.TryParse(i_userInput, out treeHeight))
-                {
-                    Console.WriteLine("Invalid format. Please enter a number.");
-                    continue;
-                }
-                break;
-
-            }
-        }
+        
         private static void printDigitsInTreeLevel(int i_level)
         {
             int amountToPrint = 1 + (treeWidthMultiplier * i_level);
@@ -91,10 +76,10 @@ namespace Ex01_03
             for (int i = 0; i < trunkLength; i++)
             {
                 Console.Write(currentLetterToPrint);
-                printSpaces(treeMiddle - 1);
+                printSpaces(treeMiddle-1);
                 Console.WriteLine("|{0}|", GetCorrectDigit());
-                AdvenceLetter();
                 
+                AdvenceLetter();
             }
 
         }
@@ -114,7 +99,4 @@ namespace Ex01_03
         }
     }
 }
-
-
-
 
