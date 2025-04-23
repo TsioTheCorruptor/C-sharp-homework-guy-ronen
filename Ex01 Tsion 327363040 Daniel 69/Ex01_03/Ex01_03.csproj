@@ -4,15 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{86DEB5B1-EEA7-42CD-9747-428457B271F1}</ProjectGuid>
+    <ProjectGuid>{6C069012-7B31-46E4-8E2C-10BF4896D133}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Ex01_01</RootNamespace>
-    <AssemblyName>Ex01_01</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <RootNamespace>Ex01_03</RootNamespace>
+    <AssemblyName>Ex01_03</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,17 +32,11 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <NoWin32Manifest>true</NoWin32Manifest>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject>BinaryStatisticsProcessor</StartupObject>
-  </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BinaryStatisticsProcessor.cs" />
+    <Compile Include="Program.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
